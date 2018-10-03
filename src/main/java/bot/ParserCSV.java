@@ -13,7 +13,7 @@ public class ParserCSV {
 	@SuppressWarnings("resource")//не уверена, нужно ли это
 
 	private String sFileName;
-	private List<Film> filmList = new ArrayList<Film>();
+	public ArrayList<Film> filmList = new ArrayList<Film>();
 	
 	
 	public ParserCSV(String inputFileName) throws Exception
@@ -34,7 +34,6 @@ public class ParserCSV {
 			filmList.add(film);		
 		}		
 	}
-	
 	
 	public Map<Integer, ArrayList<Film>> getFilmsByYear() throws Exception // "Database.csv"
 	// словарь со списками фильмов по годам
@@ -70,7 +69,7 @@ public class ParserCSV {
 		return filmsByCountry;
 	}
 
-	private List<String[]> extractData(String fileName) throws Exception {
+	public static List<String[]> extractData(String fileName) throws Exception {
 		List<String[]> allRows = new ArrayList<String[]>();
 		try {
 			CSVReader reader = new CSVReader(new FileReader(fileName), ',', '"', 1);
