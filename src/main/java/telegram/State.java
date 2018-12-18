@@ -44,6 +44,48 @@ public class State {
 			keyboard = getBasicKeyboard();
 			return;
 		}
+		else if ("Рейтинг фильмов".equals(input))
+		{
+			command = "/filmsRating";
+			newState = currentState;
+			keyboard = getBasicKeyboard();
+			return;
+		}
+		else if ("Лайкающие".equals(input))
+		{
+			command = "/userLikes";
+			newState = currentState;
+			keyboard = getBasicKeyboard();
+			return;
+		}
+		else if ("Критиканты".equals(input))
+		{
+			command = "/userDislikes";
+			newState = currentState;
+			keyboard = getBasicKeyboard();
+			return;
+		}
+		else if ("Активные за день".equals(input))
+		{
+			command = "/topToday";
+			newState = currentState;
+			keyboard = getBasicKeyboard();
+			return;
+		}
+		else if ("За 3 дня".equals(input))
+		{
+			command = "/top3days";
+			newState = currentState;
+			keyboard = getBasicKeyboard();
+			return;
+		}
+		else if ("За неделю".equals(input))
+		{
+			command = "/topWeek";
+			newState = currentState;
+			keyboard = getBasicKeyboard();
+			return;
+		}
 
 		switch (currentState) {
 		case BASIC:
@@ -79,18 +121,11 @@ public class State {
 	}
 
 	private void processChosingState(String input) {
-//		if (!database.requestExistInDatabase(currentField, input)) {
-//			command = input;
-//			keyboard = getBasicKeyboard();
-//			newState = DialogState.BASIC;
-//			currentField = null;
-//		} else {
 			currentIdFieldMap.get(currentField).add(input);
 			newState = DialogState.MORE_OPTIONS;
 			answerString = "Есть еще параметры?";
 			currentField = null;
 			keyboard = getMoreOptionsKeyboard();
-//		}
 	}
 
 	private void processBasicState(String input) {
@@ -152,9 +187,6 @@ public class State {
 		List<KeyboardRow> keyboard = new ArrayList<>();
 		KeyboardRow row = new KeyboardRow();
 		row.add("YEAR");
-		keyboard.add(row);
-		row = new KeyboardRow();
-		row.add("COUNTRY");
 		keyboard.add(row);
 		row = new KeyboardRow();
 		row.add("GENRE");
